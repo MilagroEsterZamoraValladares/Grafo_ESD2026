@@ -1,5 +1,5 @@
-use std::collections::{HashMap, HashSet, VecDeque};
 use crate::grafo::Grafo;
+use std::collections::{HashMap, HashSet, VecDeque};
 
 pub fn bfs(grafo: &Grafo, inicio: usize) -> HashMap<usize, Option<usize>> {
     let mut padres: HashMap<usize, Option<usize>> = HashMap::new();
@@ -60,8 +60,8 @@ pub fn ruta_mas_corta(grafo: &Grafo, inicio: usize, destino: usize) -> Option<Ve
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::red_ejemplo::crear_red_ejemplo;
     use crate::grafo::Grafo;
+    use crate::red_ejemplo::crear_red_ejemplo;
 
     #[test]
     fn test_ruta_directa() {
@@ -84,6 +84,32 @@ mod tests {
         assert_eq!(ruta, Some(vec![3]));
     }
 
+    #[test]
+    fn test_ruta_no_existe() {
+        let mut g = Grafo::nuevo();
+        g.agregar_nodo(0, "A".to_string());
+        g.agregar_nodo(1, "B".to_string());
+        let ruta = ruta_mas_corta(&g, 0, 1);
+        assert_eq!(ruta, None);
+    }
 
-    
+    #[test]
+    fn test_longitud_minima() {
+        let g = crear_red_ejemplo();
+        let ruta = ruta_mas_corta(&g, 1, 4).unwrap();
+        assert_eq!(ruta.len(), 3);
+    }
+
+    #[test]
+    fn test_bfs_alcanza_todos_los_nodos() {
+        let g = crear_red_ejemplo();
+        let padres = bfs(&g, 0);
+        for id in 0..6 {
+            assert!(
+                padres.contains_key(&id),
+                "BFS debería alcanzar el nodo {}",
+                id
+            );
+        }
+    }
 }
