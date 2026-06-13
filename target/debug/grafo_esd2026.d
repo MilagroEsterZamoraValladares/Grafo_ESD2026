@@ -1,0 +1,1 @@
+C:\Users\arsel\Documents\Grafo_ESD2026\target\debug\grafo_esd2026.exe: C:\Users\arsel\Documents\Grafo_ESD2026\src\bfs.rs C:\Users\arsel\Documents\Grafo_ESD2026\src\dfs.rs C:\Users\arsel\Documents\Grafo_ESD2026\src\grafo.rs C:\Users\arsel\Documents\Grafo_ESD2026\src\main.rs C:\Users\arsel\Documents\Grafo_ESD2026\src\red_ejemplo.rs
