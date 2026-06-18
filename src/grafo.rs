@@ -18,6 +18,7 @@ impl Grafo {
             adyacencia: HashMap::new(),
         }
     }
+
     pub fn agregar_nodo(&mut self, id: usize, nombre: String) {
         self.nodos.insert(id, Nodo { id, nombre });
         self.adyacencia.entry(id).or_insert(Vec::new());

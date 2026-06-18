@@ -68,7 +68,7 @@ mod tests {
         let g = crear_red_ejemplo();
         let orden = dfs(&g, 0);
         for id in 0..6 {
-            assert!(orden.contains(&id), "DFS debería alcanzar el nodo {}", id);
+            assert!(orden.contains(&id), "DFS no alcanzó nodo {}", id);
         }
         assert_eq!(orden.len(), 6);
     }
@@ -85,11 +85,7 @@ mod tests {
         let g = crear_red_ejemplo();
         let orden = dfs(&g, 0);
         let unicos: HashSet<usize> = orden.iter().cloned().collect();
-        assert_eq!(
-            orden.len(),
-            unicos.len(),
-            "DFS no debería visitar nodos repetidos"
-        );
+        assert_eq!(orden.len(), unicos.len(), "DFS no debería visitar nodos repetidos");
     }
 
     #[test]
@@ -97,10 +93,7 @@ mod tests {
         let g = crear_red_ejemplo();
         let rec: HashSet<usize> = dfs(&g, 0).into_iter().collect();
         let iter: HashSet<usize> = dfs_iterativo(&g, 0).into_iter().collect();
-        assert_eq!(
-            rec, iter,
-            "Ambas versiones deben visitar el mismo conjunto de nodos"
-        );
+        assert_eq!(rec, iter, "Ambas versiones deben visitar el mismo conjunto de nodos");
     }
 
     #[test]

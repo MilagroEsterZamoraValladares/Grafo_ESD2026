@@ -105,11 +105,7 @@ mod tests {
         let g = crear_red_ejemplo();
         let padres = bfs(&g, 0);
         for id in 0..6 {
-            assert!(
-                padres.contains_key(&id),
-                "BFS debería alcanzar el nodo {}",
-                id
-            );
+            assert!(padres.contains_key(&id), "BFS no alcanzó nodo {}", id);
         }
     }
 }
